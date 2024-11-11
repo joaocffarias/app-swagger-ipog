@@ -1,6 +1,5 @@
 package br.edu.ipog.backend3.app.api.produto;
 
-import br.edu.ipog.backend3.app.GenericOperationResource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

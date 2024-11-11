@@ -1,4 +1,4 @@
-package br.edu.ipog.backend3.app;
+package br.edu.ipog.backend3.app.generics;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
