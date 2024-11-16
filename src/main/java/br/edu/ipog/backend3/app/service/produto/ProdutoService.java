@@ -1,6 +1,8 @@
 package br.edu.ipog.backend3.app.service.produto;
 
 import br.edu.ipog.backend3.app.generics.GenericOperationsService;
+import br.edu.ipog.backend3.app.mapper.ProdutoModelEntityMapper;
+import br.edu.ipog.backend3.app.repository.ProdutoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,19 @@ import java.util.List;
 @Service
 public class ProdutoService implements GenericOperationsService<ProdutoModel, Integer> {
 
+    final ProdutoRepository produtoRepository;
+    final ProdutoModelEntityMapper produtoModelEntityMapper;
+
+    public ProdutoService(ProdutoRepository produtoRepository, ProdutoModelEntityMapper produtoModelEntityMapper) {
+        this.produtoRepository = produtoRepository;
+        this.produtoModelEntityMapper = produtoModelEntityMapper;
+    }
+
     @Override
     public ProdutoModel create(ProdutoModel model) {
         log.info("Criando novo produto");
-        return null;
+        var produtoCadastrado = produtoRepository.save(produtoModelEntityMapper.toEntity(model));
+        return produtoModelEntityMapper.toModel(produtoCadastrado);
     }
 
     @Override

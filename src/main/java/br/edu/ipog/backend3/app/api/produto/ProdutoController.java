@@ -1,6 +1,9 @@
 package br.edu.ipog.backend3.app.api.produto;
 
+import br.edu.ipog.backend3.app.mapper.ProdutoDtoModelMapper;
+import br.edu.ipog.backend3.app.service.produto.ProdutoService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +12,16 @@ import java.util.List;
 @Slf4j
 @Component
 public class ProdutoController implements ProdutoResource{
+
+    final ProdutoService produtoService;
+    private final ProdutoDtoModelMapper produtoDtoModelMapper;
+
+    public ProdutoController(ProdutoService produtoService, ProdutoDtoModelMapper produtoDtoModelMapper) {
+        this.produtoService = produtoService;
+        this.produtoDtoModelMapper = produtoDtoModelMapper;
+    }
+
+
     /**
      * Cria um novo registro no sistema.
      *
@@ -17,7 +30,14 @@ public class ProdutoController implements ProdutoResource{
      */
     @Override
     public ResponseEntity<ProdutoDto> create(ProdutoDto dto) {
-        return null;
+
+        var produtoConvertido = produtoDtoModelMapper.toModel(dto);
+
+        var produto = produtoService.create(produtoConvertido);
+
+        var produtoEnviado = produtoDtoModelMapper.toDTO(produto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtoEnviado);
     }
 
     @Override

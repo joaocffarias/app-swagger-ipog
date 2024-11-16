@@ -1,14 +1,14 @@
 package br.edu.ipog.backend3.app.api.produto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProdutoDto {
 
     private Integer id;
