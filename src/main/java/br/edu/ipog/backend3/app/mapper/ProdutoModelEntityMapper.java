@@ -1,7 +1,5 @@
 package br.edu.ipog.backend3.app.mapper;
 
-
-import br.edu.ipog.backend3.app.api.produto.ProdutoDto;
 import br.edu.ipog.backend3.app.entity.ProdutoEntity;
 import br.edu.ipog.backend3.app.service.produto.ProdutoModel;
 import org.mapstruct.Mapper;
