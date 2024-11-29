@@ -23,6 +23,21 @@ spring:
     location: "${SPRING_BANNER_LOCATION:classpath:/banner.txt}"
 
 
+swagger:
+  jwt:
+     enable: ${SWAGGER_JWT_ENABLE:false}#Habilita ou desabilita JWT no swagger
+  apiTitle: "APP Faculdade IPOG"
+  apiDescription: "Sistema de exemplo para o módulo backend3"
+  apiVersion: ${project.version}
+  apiContactName: "Backend3 - 4° Período"
+  apiContactEmail: "ads4@ipog.edu.br"
+  apiContactUrl: "https://ipog.edu.br/ads4"
+  apiTermsOfService: "https://ipog.edu.br"
+  apiLicenseName: "Licença API IPOG"
+  apiLicenseUrl: "https://ipog.edu.br/license"
+
+
+
   #Configuracao do ORM (Hibernate)
   jpa:
     database-platform: ${JPA_DATABASE_PLATFORM:org.hibernate.dialect.H2Dialect}
